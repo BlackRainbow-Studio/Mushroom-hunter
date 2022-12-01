@@ -7,11 +7,22 @@ using UnityEngine.Events;
 public class Target : MonoBehaviour
 {
     [SerializeField] private UnityEvent onClicked;
+    [SerializeField] private UnityEvent onGone;
+
     private void OnMouseDown()
     {
-        Debug.Log("Click on target");
+        Debug.Log($"Click on {this.gameObject.name}");
 
         Destroy(this.gameObject);
         onClicked?.Invoke();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log($"Lost {this.gameObject.name}");
+
+        Destroy(this.gameObject);
+        onGone?.Invoke();
+        // уменьшение счета, уничтожение объекта
     }
 }

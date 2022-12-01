@@ -15,4 +15,12 @@ public class Score : MonoBehaviour
         score += 5;
         text.text = score.ToString();
     }
+    
+    public void Decrease()
+    {
+        Debug.Log("Score decreased");
+
+        score -= 10;
+        text.text = score.ToString();
+    }
 }
