@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Chunk : MonoBehaviour
 {
-    [SerializeField] Transform endPoint;
+    [SerializeField] public Transform endPoint;
     
     // Start is called before the first frame update
     void Start()
