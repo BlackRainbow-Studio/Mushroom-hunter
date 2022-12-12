@@ -4,9 +4,19 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
+    public static Score Instance;
     private int score = 0;
 
     [SerializeField] TMPro.TMP_Text text;
+
+    private void Awake()
+    {
+        if (!Instance)
+        {
+            Instance = this;
+            Debug.Log("Score initialized");
+        }
+    }
 
     public void Increase()
     {
