@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    [SerializeField] float verticalSpeed = 5;
+    public static Level Instance;
+
+    public float verticalSpeed = 5;
 
     List<Chunk> chunks = new List<Chunk>();
     [SerializeField] GameObject chunkPrefab;
@@ -13,13 +15,19 @@ public class Level : MonoBehaviour
     [SerializeField] Transform innerPoint;
     [SerializeField] Transform outerPoint;
 
+    private void Awake()
+    {
+        if (!Instance)
+            Instance = this;
+    }
     private void Start()
     {
         chunks.Add(Instantiate(chunkPrefab, Vector3.zero, Quaternion.identity, transform).GetComponent<Chunk>());
+        //chunks[0].
         lastChunk = chunks[chunks.Count - 1];
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Move();
 
@@ -44,5 +52,14 @@ public class Level : MonoBehaviour
     private void Move()
     {
         transform.Translate(Vector3.back * verticalSpeed * 0.01f);
+    }
+
+    public void IncreaseSpeed()
+    {
+        verticalSpeed += 5;
+    }
+    public void DecreaseSpeed()
+    {
+        verticalSpeed -= 5;
     }
 }

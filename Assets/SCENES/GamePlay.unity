@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cade873813a9943aadab5de9d5ce06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalSpeed: 10
+  verticalSpeed: 20
   chunkPrefab: {fileID: 8116921693955770346, guid: cba1c82bbb0e00947a892ed461e9cce3,
     type: 3}
   innerPoint: {fileID: 1245501415}

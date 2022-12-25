@@ -5,9 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Mushroom hunter/Prototype Mobile input.unity
-    guid: 9c4ebb68067c05c499552c0bd9c18214
+    path: Assets/SCENES/Prototyping.unity
+    guid: 18a67daf03144684a8c089333db2b6f9
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 3ffc1d31e3e7f834089e969ebb85b577,
+      type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000,
+      guid: 063c5cf608e9be44a9a4c4a3c8d19d54, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
-      guid: 705840865d58cec4e9c242db3fb26bce, type: 2}
+      guid: c275e265108b5fc41becf7181d4944c3, type: 2}

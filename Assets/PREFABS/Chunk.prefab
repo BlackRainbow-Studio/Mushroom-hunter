@@ -49,7 +49,7 @@ MonoBehaviour:
   scale: 5
   itemPrefab: {fileID: 4563786442679371787, guid: a9badb41248b3104dab4e69e2b44fdd7,
     type: 3}
-  generationChance: 15
+  generationChance: 30
 --- !u!1 &8116921692937717087
 GameObject:
   m_ObjectHideFlags: 0

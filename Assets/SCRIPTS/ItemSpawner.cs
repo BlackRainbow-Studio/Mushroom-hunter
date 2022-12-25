@@ -62,8 +62,6 @@ public class ItemSpawner : MonoBehaviour
                     GameObject item = Instantiate(itemPrefab);
                     item.transform.parent = transform;
                     item.transform.localPosition = pos;
-                    //item.transform.localScale = new Vector3(scale, scale, scale);
-                    //item.transform.position = pos;
                 }
             }
     }
