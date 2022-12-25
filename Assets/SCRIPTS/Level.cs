@@ -7,6 +7,7 @@ public class Level : MonoBehaviour
     public static Level Instance;
 
     public float verticalSpeed = 5;
+    [SerializeField] float verticalSpeedSettingStep;
 
     List<Chunk> chunks = new List<Chunk>();
     [SerializeField] GameObject chunkPrefab;
@@ -56,10 +57,10 @@ public class Level : MonoBehaviour
 
     public void IncreaseSpeed()
     {
-        verticalSpeed += 5;
+        verticalSpeed += verticalSpeedSettingStep;
     }
     public void DecreaseSpeed()
     {
-        verticalSpeed -= 5;
+        verticalSpeed -= verticalSpeedSettingStep;
     }
 }

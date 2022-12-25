@@ -27,7 +27,7 @@ public class ItemSpawner : MonoBehaviour
     void Start()
     {
         InitialiseMap();
-        Generate();
+        GenerateMap();
         DrawMap();
     }
 
@@ -41,7 +41,7 @@ public class ItemSpawner : MonoBehaviour
             }
     }
 
-    public virtual void Generate()
+    public virtual void GenerateMap()
     {
         for (int z = 0; z < depth; z++)
             for (int x = 0; x < width; x++)
