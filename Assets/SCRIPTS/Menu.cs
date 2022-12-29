@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StartMenu : MonoBehaviour
+public class Menu : MonoBehaviour
 {
+    [SerializeField] GameObject start;
+    [SerializeField] GameObject win;
+    [SerializeField] GameObject loss;
+
     private void Awake()
     {
-        Time.timeScale = 0;
+        PauseGame();
     }
 
     public void StartGame()
@@ -16,7 +20,8 @@ public class StartMenu : MonoBehaviour
     }
     public void PauseGame()
     {
-
+        this.gameObject.SetActive(true);
+        Time.timeScale = 0;
     }
 
 }

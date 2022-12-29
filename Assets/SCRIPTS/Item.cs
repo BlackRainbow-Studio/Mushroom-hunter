@@ -5,21 +5,21 @@ using UnityEngine.Events;
 
 public class Item : MonoBehaviour
 {
-    [SerializeField] private UnityEvent onClicked;
-    [SerializeField] private UnityEvent onGone;
-    Score score;
+    Game game;
+
+    [SerializeField] int itemPickedCost = 10;
+    [SerializeField] int itemLosedCost = -5;
 
     private void Start()
     {
-        score = Score.Instance;
+        game = Game.Instance;
     }
     private void OnMouseDown()
     {
         //Debug.Log($"Click on {this.gameObject.name}");
 
         Destroy(this.gameObject);
-        onClicked?.Invoke();
-        score.Increase();
+        game.UpdateScore(itemPickedCost);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -27,7 +27,6 @@ public class Item : MonoBehaviour
         //Debug.Log($"Lost {this.gameObject.name}");
 
         Destroy(this.gameObject);
-        onGone?.Invoke();
-        score.Decrease();
+        game.UpdateScore(itemLosedCost);
     }
 }
