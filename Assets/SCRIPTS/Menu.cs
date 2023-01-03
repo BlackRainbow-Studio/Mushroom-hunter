@@ -10,15 +10,35 @@ public class Menu : MonoBehaviour
 
     private void Awake()
     {
-        PauseGame();
+        ShowMenu();
     }
 
-    public void StartGame()
+    public void SwitchPanel(GameStatus status)
+    {
+        ShowMenu();
+        switch (status)
+        {
+            case GameStatus.START:
+                start.SetActive(true);
+                break;
+            case GameStatus.WIN:
+                win.SetActive(true);
+                break;
+            case GameStatus.LOSS:
+                loss.SetActive(true);
+                break;
+            default:
+                start.SetActive(true);
+                break;
+        }
+    }
+
+    public void HideMenu()
     {
         this.gameObject.SetActive(false);
         Time.timeScale = 1;
     }
-    public void PauseGame()
+    public void ShowMenu()
     {
         this.gameObject.SetActive(true);
         Time.timeScale = 0;

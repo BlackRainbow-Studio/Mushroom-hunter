@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum GameStatus { START, WIN, LOSS}
 
 public class Game : MonoBehaviour
 {
