@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Item : MonoBehaviour
 {
     Game game;
+    [SerializeField] UnityEvent onItemRaised;
 
     [SerializeField] int itemPickedCost = 10;
     [SerializeField] int itemLosedCost = -5;
@@ -28,5 +29,10 @@ public class Item : MonoBehaviour
 
         Destroy(this.gameObject);
         game.UpdateScore(itemLosedCost);
+    }
+
+    private void Raise()
+    {
+        onItemRaised?.Invoke();
     }
 }

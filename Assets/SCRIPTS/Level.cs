@@ -8,6 +8,7 @@ public class Level : MonoBehaviour
 
     public float verticalSpeed = 5;
     [SerializeField] float verticalSpeedSettingStep;
+    [SerializeField] Transform _movingPlatform;
 
     List<Chunk> chunks = new List<Chunk>();
     [SerializeField] GameObject chunkPrefab;
@@ -47,12 +48,13 @@ public class Level : MonoBehaviour
     void NewChunk()
     {
         // Добавить обработку exception для chunk[0] сюда из Start
-        chunks.Add(Instantiate(chunkPrefab, lastChunk.endPoint.position, Quaternion.identity, transform).GetComponent<Chunk>());
+        chunks.Add(Instantiate(chunkPrefab, lastChunk.endPoint.position, Quaternion.identity, _movingPlatform).GetComponent<Chunk>());
         lastChunk = chunks[chunks.Count - 1];
+        lastChunk.transform.parent = _movingPlatform;
     }
     private void Move()
     {
-        transform.Translate(Vector3.back * verticalSpeed * 0.01f);
+        _movingPlatform.Translate(Vector3.back * verticalSpeed * 0.01f);
     }
 
     public void IncreaseSpeed()
