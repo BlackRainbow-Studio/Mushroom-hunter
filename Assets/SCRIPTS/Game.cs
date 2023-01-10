@@ -44,4 +44,11 @@ public class Game : MonoBehaviour
     {
         Debug.Log($"Loose...!");
     }
+
+    public void OnItemRaised(Item item) 
+    {
+        Debug.Log($"Got item!");
+        UpdateScore(50);
+        Destroy(item.gameObject);
+    }
 }
