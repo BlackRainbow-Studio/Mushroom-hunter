@@ -6,7 +6,11 @@ using UnityEngine.Events;
 public class Item : MonoBehaviour
 {
     Game game;
+
     [SerializeField] GameEvent_SO onItemRaised;
+
+
+    [SerializeField] GameObject model;
 
     [SerializeField] int itemPickedCost = 10;
     [SerializeField] int itemLosedCost = -5;
@@ -14,13 +18,6 @@ public class Item : MonoBehaviour
     private void Start()
     {
         game = Game.Instance;
-    }
-    private void OnMouseDown()
-    {
-        //Debug.Log($"Click on {this.gameObject.name}");
-
-        Destroy(this.gameObject);
-        game.UpdateScore(itemPickedCost);
     }
 
     private void OnTriggerEnter(Collider other)

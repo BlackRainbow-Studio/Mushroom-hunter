@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Configuration", menuName = "Core/Configuration")]
+[CreateAssetMenu(fileName = "Configuration", menuName = "Gameplay/Configuration")]
 [System.Serializable]
 
 public class Configuration : ScriptableObject

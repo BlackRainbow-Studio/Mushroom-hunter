@@ -16,33 +16,33 @@ public class MapLocation
 
 public class ItemSpawner : MonoBehaviour
 {
+    [SerializeField] Transform spawnPoint;
+
     public int width = 4; //x length
     public int depth = 8; //z length
     public int scale = 5;
     public byte[,] map;
 
     [SerializeField] GameObject itemPrefab;
+    [SerializeField] GameObject itemPrefab2;
     [SerializeField] int generationChance = 50;
 
     void Start()
     {
-        InitialiseMap();
         GenerateMap();
-        DrawMap();
+        SpawnItems();
     }
 
-    void InitialiseMap()
+    void GenerateMap()
     {
         map = new byte[width,depth];
+        
         for (int z = 0; z < depth; z++)
             for (int x = 0; x < width; x++)
             {
                     map[x, z] = 0;
             }
-    }
 
-    public virtual void GenerateMap()
-    {
         for (int z = 0; z < depth; z++)
             for (int x = 0; x < width; x++)
             {
@@ -51,7 +51,7 @@ public class ItemSpawner : MonoBehaviour
             }
     }
 
-    void DrawMap()
+    void SpawnItems()
     {
         for (int z = 0; z < depth; z++)
             for (int x = 0; x < width; x++)
@@ -60,7 +60,7 @@ public class ItemSpawner : MonoBehaviour
                 {
                     Vector3 pos = new Vector3(x * scale, 0, z * scale);
                     GameObject item = Instantiate(itemPrefab);
-                    item.transform.parent = transform;
+                    item.transform.parent = spawnPoint;
                     item.transform.localPosition = pos;
                 }
             }
