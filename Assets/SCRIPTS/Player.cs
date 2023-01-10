@@ -10,4 +10,9 @@ public class Player : MonoBehaviour
     {
         transform.Translate(_joystick.Horizontal * _moveSpeed, 0, _joystick.Vertical * _moveSpeed);
     }
+
+    public void SetSpeed(float speed)
+    {
+        _moveSpeed = speed;
+    }
 }

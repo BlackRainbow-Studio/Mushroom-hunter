@@ -24,7 +24,8 @@ public class Level : MonoBehaviour
     }
     private void Start()
     {
-        chunks.Add(Instantiate(chunkPrefab, Vector3.zero, Quaternion.identity, transform).GetComponent<Chunk>());
+        chunks.Add(GetComponentInChildren<Chunk>());
+        //chunks.Add(Instantiate(chunkPrefab, Vector3.zero, Quaternion.identity, transform).GetComponent<Chunk>());
         //chunks[0].
         lastChunk = chunks[chunks.Count - 1];
     }
@@ -35,7 +36,7 @@ public class Level : MonoBehaviour
 
         if (lastChunk.endPoint.position.z <= innerPoint.position.z)
         {
-            NewChunk();
+            CreateChunk();
         }
         
         if (chunks[0].endPoint.position.z <= outerPoint.position.z)
@@ -45,7 +46,7 @@ public class Level : MonoBehaviour
         }
     }
 
-    void NewChunk()
+    void CreateChunk()
     {
         // Добавить обработку exception для chunk[0] сюда из Start
         chunks.Add(Instantiate(chunkPrefab, lastChunk.endPoint.position, Quaternion.identity, _movingPlatform).GetComponent<Chunk>());

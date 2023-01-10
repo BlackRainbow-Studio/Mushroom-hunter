@@ -7,6 +7,9 @@ public enum GameStatus { START, WIN, LOSS}
 public class Game : MonoBehaviour
 {
     public static Game Instance;
+    [SerializeField] Configuration configuration;
+    [SerializeField] Player player;
+
     private int score = 50;
 
     [SerializeField] private int winRate = 200;
@@ -21,6 +24,10 @@ public class Game : MonoBehaviour
             Instance = this;
             Debug.Log("Game started");
         }
+    }
+    private void Start()
+    {
+        player.SetSpeed(configuration.playerSpeed);
     }
 
     public void UpdateScore(int step)
