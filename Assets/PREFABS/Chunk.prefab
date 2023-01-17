@@ -386,6 +386,7 @@ MonoBehaviour:
   width: 4
   depth: 8
   scale: 5
-  itemPrefab: {fileID: 4563786442679371787, guid: a9badb41248b3104dab4e69e2b44fdd7,
-    type: 3}
+  itemPrefabs:
+  - {fileID: 11400000, guid: 22780a99b7c1f8441b6f2ef34f9e229e, type: 2}
+  - {fileID: 11400000, guid: 9e6466bc9e6de4846bf18874363bf7c5, type: 2}
   generationChance: 30

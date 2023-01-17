@@ -8,12 +8,7 @@ public class Item : MonoBehaviour
     Game game;
 
     [SerializeField] GameEvent_SO onItemRaised;
-
-
-    [SerializeField] GameObject model;
-
-    [SerializeField] int itemPickedCost = 10;
-    [SerializeField] int itemLosedCost = -5;
+    [SerializeField] ItemConfig config;
 
     private void Start()
     {
@@ -31,6 +26,7 @@ public class Item : MonoBehaviour
 
     private void Raise()
     {
-        onItemRaised?.Invoke(this, this);
+        onItemRaised?.Invoke(this, config);
+        Destroy(this.gameObject);
     }
 }

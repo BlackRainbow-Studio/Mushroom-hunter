@@ -9,6 +9,7 @@ public class Game : MonoBehaviour
     public static Game Instance;
     [SerializeField] Configuration configuration;
     [SerializeField] Player player;
+    [SerializeField] AudioSource audioSource;
 
     private int score = 50;
 
@@ -52,10 +53,12 @@ public class Game : MonoBehaviour
         Debug.Log($"Loose...!");
     }
 
-    public void OnItemRaised(Item item) 
+    public void OnItemRaised(ItemConfig itemConfig) 
     {
-        Debug.Log($"Got item!");
+        Debug.Log($"Got item {itemConfig.name}!");
+        audioSource.clip = itemConfig.onRaisedSound;
+        audioSource.Play();
         UpdateScore(50);
-        Destroy(item.gameObject);
+        //Destroy(item.gameObject);
     }
 }

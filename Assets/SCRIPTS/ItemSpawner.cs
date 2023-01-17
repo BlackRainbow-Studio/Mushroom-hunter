@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 
 public class MapLocation       
@@ -21,33 +22,40 @@ public class ItemSpawner : MonoBehaviour
     public int width = 4; //x length
     public int depth = 8; //z length
     public int scale = 5;
-    public byte[,] map;
+    public int[,] map;
 
-    [SerializeField] GameObject itemPrefab;
-    [SerializeField] GameObject itemPrefab2;
+    [SerializeField] List<ItemConfig> itemPrefabs;
     [SerializeField] int generationChance = 50;
 
     void Start()
     {
+        InitializeMap();
         GenerateMap();
         SpawnItems();
     }
 
-    void GenerateMap()
+    private void InitializeMap()
     {
-        map = new byte[width,depth];
-        
-        for (int z = 0; z < depth; z++)
-            for (int x = 0; x < width; x++)
-            {
-                    map[x, z] = 0;
-            }
+        map = new int[width, depth];
 
         for (int z = 0; z < depth; z++)
             for (int x = 0; x < width; x++)
             {
-               if(Random.Range(0,100) < generationChance)
-                 map[x, z] = 1;     // 1 = item  0 = empty
+                map[x, z] = -1;
+            }
+    }
+
+    void GenerateMap()
+    {
+
+        for (int z = 0; z < depth; z++)
+            for (int x = 0; x < width; x++)
+            {
+                if (Random.Range(0, 100) < generationChance)
+                    if (Random.Range(0, 10) < 50)
+                        map[x, z] = 0;
+                    else
+                        map[x, z] = 1;
             }
     }
 
@@ -56,13 +64,16 @@ public class ItemSpawner : MonoBehaviour
         for (int z = 0; z < depth; z++)
             for (int x = 0; x < width; x++)
             {
-                if (map[x, z] == 1)
-                {
-                    Vector3 pos = new Vector3(x * scale, 0, z * scale);
-                    GameObject item = Instantiate(itemPrefab);
-                    item.transform.parent = spawnPoint;
-                    item.transform.localPosition = pos;
-                }
+                if (map[x, z] != -1)
+                    SpawnItem(x, z);
             }
+
+        void SpawnItem(int x, int z)
+        {
+            Vector3 pos = new Vector3(x * scale, 0, z * scale);
+            GameObject item = Instantiate(itemPrefabs[map[x, z]].prefab);
+            item.transform.parent = spawnPoint;
+            item.transform.localPosition = pos;
+        }
     }
 }
