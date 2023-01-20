@@ -28,7 +28,7 @@ public class Game : MonoBehaviour
     }
     private void Start()
     {
-        player.SetSpeed(configuration.playerSpeed);
+        //player.SetSpeed(configuration.playerSpeed);
     }
 
     public void UpdateScore(int step)
