@@ -228,9 +228,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 127003185}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cec5181b9b3ad3f4d91010a686d7b422, type: 3}
+  m_Script: {fileID: 11500000, guid: dba225671729a7842abbe06541a72b09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forwardSpeed: 0.1
 --- !u!136 &127003188
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3875,13 +3876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cade873813a9943aadab5de9d5ce06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalSpeed: 2
-  verticalSpeedSettingStep: 2
-  _movingPlatform: {fileID: 0}
-  chunkPrefab: {fileID: 8116921693955770346, guid: cba1c82bbb0e00947a892ed461e9cce3,
-    type: 3}
-  innerPoint: {fileID: 0}
-  outerPoint: {fileID: 0}
+  stripsCount: 0
 --- !u!4 &1735228748
 Transform:
   m_ObjectHideFlags: 0
@@ -4083,8 +4078,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad0079a1a7f2bf48b7785fbdc751c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {fileID: 1498657506}
-  density: {fileID: 0}
 --- !u!224 &1906561829 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,

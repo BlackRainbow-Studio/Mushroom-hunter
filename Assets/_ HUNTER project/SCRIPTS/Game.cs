@@ -8,7 +8,7 @@ public class Game : MonoBehaviour
 {
     public static Game Instance;
     [SerializeField] Configuration configuration;
-    [SerializeField] Player player;
+    [SerializeField] AvatarController player;
     [SerializeField] AudioSource audioSource;
 
     private int score = 50;
