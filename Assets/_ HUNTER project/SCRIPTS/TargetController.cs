@@ -5,6 +5,9 @@ using UnityEngine;
 public class TargetController : MonoBehaviour
 {
     [SerializeField] float forwardSpeed;
+
+    [SerializeField] GameEvent_SO TargetReached;
+
     void Update()
     {
         MoveVertical();
@@ -15,4 +18,9 @@ public class TargetController : MonoBehaviour
     }
 
     public void SetSpeed() { }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        TargetReached?.Invoke(this, this);
+    }
 }
