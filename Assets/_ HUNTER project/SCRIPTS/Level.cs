@@ -10,6 +10,4 @@ public class Level : MonoBehaviour
         if (!Instance)
             Instance = this;
     }
-
-    [SerializeField] int stripsCount;
 }

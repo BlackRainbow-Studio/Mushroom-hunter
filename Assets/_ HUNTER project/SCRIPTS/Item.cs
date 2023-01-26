@@ -18,7 +18,7 @@ public class Item : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log($"Function {nameof(OnTriggerEnter)} called in {this}");
-        if (other.GetComponent<AvatarController>())
+        if (other.GetComponent<Avatar>())
         {
             Raise();
         }

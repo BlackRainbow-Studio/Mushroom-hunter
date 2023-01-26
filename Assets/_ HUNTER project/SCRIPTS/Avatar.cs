@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AvatarController : MonoBehaviour
+public class Avatar : MonoBehaviour
 {
     [SerializeField] float forwardSpeed;
 

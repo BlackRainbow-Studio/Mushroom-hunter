@@ -7,16 +7,17 @@ public enum GameStatus { START, WIN, LOSS}
 public class Game : MonoBehaviour
 {
     public static Game Instance;
+
+    [Header ("COMPONENTS")]
+    [SerializeField] Avatar avatar;
+    [SerializeField] Target target;
+    
+    [Header ("CONFIGS")]
     [SerializeField] Configuration configuration;
-    [SerializeField] AvatarController player;
-    [SerializeField] AudioSource audioSource;
+    [SerializeField] float maxDistance;
 
-    private int score = 50;
-
-    [SerializeField] private int winRate = 200;
-    [SerializeField] private int looseRate = 0;
-
-    [SerializeField] TMPro.TMP_Text scoreText;
+    [Header ("EVENTS")]
+    [SerializeField] GameEvent_SO winEvent;
 
     private void Awake()
     {
@@ -26,39 +27,34 @@ public class Game : MonoBehaviour
             Debug.Log("Game started");
         }
     }
-    private void Start()
+    private void Update()
     {
-        //player.SetSpeed(configuration.playerSpeed);
-    }
-
-    public void UpdateScore(int step)
-    {
-        Debug.Log($"Score updated:{score} + {step}");
-
-        score += step;
-        scoreText.text = score.ToString();
-
-        if (score > winRate)
-            Win();
-        if (score < looseRate)
-            Loose();
+        if (this.DistanceAvatarTarget() > maxDistance)
+            Fail();
     }
 
     public void Win() 
     {
         Debug.Log($"Win!");
     }
-    public void Loose() 
+    public void Fail() 
     {
-        Debug.Log($"Loose...!");
+        Debug.Log($"Game over...!");
     }
 
-    public void OnItemRaised(ItemConfig itemConfig) 
+/*    public void OnItemRaised(ItemConfig itemConfig) 
     {
         Debug.Log($"Got item {itemConfig.name}!");
         audioSource.clip = itemConfig.onRaisedSound;
         audioSource.Play();
-        UpdateScore(50);
         //Destroy(item.gameObject);
+    }*/
+
+    ////////////////////
+    private float DistanceAvatarTarget()
+    {
+        float distance = target.transform.position.z - avatar.transform.position.z;
+
+        return distance;
     }
 }
