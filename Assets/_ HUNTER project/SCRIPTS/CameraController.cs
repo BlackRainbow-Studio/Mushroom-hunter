@@ -4,11 +4,21 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] Transform avatar;
+    [SerializeField] Transform trackingObject;
     [SerializeField] Vector3 offset;
+
+    private void Start()
+    {
+        // зафиксировать отступ от avatar
+        offset = transform.position - trackingObject.position;
+    }
 
     void Update()
     {
-        transform.position = avatar.position + offset;
+        // обеспечить отступ по y и z
+        Vector3 newPosition;
+        newPosition = trackingObject.position + offset;
+        newPosition.x = 0;
+        transform.position = newPosition;
     }
 }
