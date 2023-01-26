@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d375e99bb7fd8d43beb7587b6d8174e, type: 3}
-  m_Name: OnItemRaised
+  m_Name: ItemRaised
   m_EditorClassIdentifier: 
   writeDebug: 0
