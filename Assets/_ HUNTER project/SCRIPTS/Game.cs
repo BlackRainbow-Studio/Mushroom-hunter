@@ -8,13 +8,13 @@ public class Game : MonoBehaviour
 {
     public static Game Instance;
 
-    [Header ("COMPONENTS")]
+    [Header ("ACTORS")]
     [SerializeField] Avatar avatar;
     [SerializeField] Target target;
     
-    [Header ("CONFIGS")]
-    [SerializeField] Configuration configuration;
-    [SerializeField] float maxDistance;
+    [Header ("POINTS")]
+    [SerializeField] Transform failPoint;
+    [SerializeField] Transform generationPoint;
 
     [Header ("EVENTS")]
     [SerializeField] GameEvent_SO winEvent;
@@ -29,8 +29,8 @@ public class Game : MonoBehaviour
     }
     private void Update()
     {
-        if (this.DistanceAvatarTarget() > maxDistance)
-            Fail();
+        failPoint.position = new Vector3(0, 0, avatar.GetZ());
+        generationPoint.position = new Vector3(0, 0, avatar.GetZ());
     }
 
     public void Win() 
@@ -40,21 +40,5 @@ public class Game : MonoBehaviour
     public void Fail() 
     {
         Debug.Log($"Game over...!");
-    }
-
-/*    public void OnItemRaised(ItemConfig itemConfig) 
-    {
-        Debug.Log($"Got item {itemConfig.name}!");
-        audioSource.clip = itemConfig.onRaisedSound;
-        audioSource.Play();
-        //Destroy(item.gameObject);
-    }*/
-
-    ////////////////////
-    private float DistanceAvatarTarget()
-    {
-        float distance = target.transform.position.z - avatar.transform.position.z;
-
-        return distance;
     }
 }

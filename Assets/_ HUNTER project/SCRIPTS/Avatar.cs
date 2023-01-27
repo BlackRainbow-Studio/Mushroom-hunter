@@ -27,4 +27,8 @@ public class Avatar : MonoBehaviour
     }
 
     public void SetSpeed() { }
+    public float GetZ()
+    {
+        return transform.position.z;
+    }
 }
